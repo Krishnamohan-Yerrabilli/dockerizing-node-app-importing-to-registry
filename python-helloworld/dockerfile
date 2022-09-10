@@ -1,0 +1,17 @@
+#base image version
+FROM python:3.8
+
+#this labels are going to help us organize docker images
+LABEL maintainer="Krishnamohan Yerrabilli"
+
+#copy current directory files to the in container app directory 
+COPY . /app 
+
+#any commands we are going to run on this working directory
+WORKDIR /app
+
+#any other dependecies are going to downloaded
+RUN pip install -r requirements.txt
+
+# command to run on container start
+CMD [ "python", "app.py" ]
